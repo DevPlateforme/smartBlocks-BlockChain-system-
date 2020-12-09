@@ -1,28 +1,42 @@
 <?php
 
-require_once 'header.php'
-
-?>
-
-
-<h1>Bienvenue dans Smart Block</h1>
-
-<h3>Désireux d'avoir un système sécurisé, et fiable pour inscrire vos transactions entre amis?</h3>
+require_once 'constants.php';
+require_once 'db/db.php';
+require_once 'classes/block.php';
+require_once 'classes/blockChain.php';
+require_once 'controllers/blockChainController.php';
+require_once 'views/header.php';
 
 
 
 
-<a href='newBlock.php'><button>Créer un block</button></a>
+$request = $_SERVER['REQUEST_URI'];
 
 
+switch($request){
 
-<form method='post' action='findBlock.php'>
-     <input type='text' placeholder='trouver un block'>
-</form>
+    case root :
+
+        echo 'ok';
+        
+        require 'views/welcome.php';
+
+        break;
+
+    case root . "newblockchain":
+
+        require 'views/newBLockChain.php';
+
+        break;
+
+    case root . 'createblockchain' . '?name=' . $_GET['name'] :
+
+        //call controller method
+
+        createBlockChain($_GET['name']);
+
+         break;
+    
 
 
-<?php
-
-require_once 'footer.php'
-
-?>
+}
