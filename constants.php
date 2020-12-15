@@ -1,7 +1,7 @@
 <?php
 
 
-define("root", "/smartBlock/");
+define("root", "/blockchain/");
 
-define("rootUrl", "http://localhost/smartBlock");
+define("rootUrl", !empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . root;
 

@@ -6,10 +6,43 @@ function createBlockChain($blockChainName){
 
     global $db;
 
+
+    //check if value already exists
+
+
+    $sql = 'SELECT name FROM blockchains WHERE name = :blockChainName' ;
+
+    $stmt->prepare($sql);
+
+
+
+    try{
+        
+        $stmt->execute([ ':blockChainName' => $blockChainName ]);
+
+        echo 'ce nom est disponible';
+
+        $result = $stmt->fetchAll();
+
+
+        echo $result;
+
+
+    } catch(PDOException $e){
+
+          return $stmt->errorInfo();
+
+    }
+
+
+
+
+
+
     //if not used name, insert a new row into the table 'blockchains'
 
-     $sql = "INSERT INTO Blockchains(name) VALUES (:blockName)";
 
+     $sql = "INSERT INTO blockchains(name) VALUES (:blockName)";
 
      $stmt = $db->prepare($sql);
     
@@ -20,6 +53,13 @@ function createBlockChain($blockChainName){
       return;
   
      }
+
+
+     //CREATE NEW BLOCKCHAIN TABLE
+
+
+     //INSERT THE ORIGIN BLOCK 
+
 
 
      echo 'you just created a block chain';

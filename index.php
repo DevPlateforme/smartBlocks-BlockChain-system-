@@ -1,7 +1,7 @@
 <?php
 
 require_once 'constants.php';
-require_once 'db/db.php';
+require_once 'classes/db.php';
 require_once 'classes/block.php';
 require_once 'classes/blockChain.php';
 require_once 'controllers/blockChainController.php';
@@ -29,14 +29,28 @@ switch($request){
 
         break;
 
-    case root . 'createblockchain' . '?name=' . $_GET['name'] :
+}
 
-        //call controller method
 
-        createBlockChain($_GET['name']);
+//Requests with GET
 
-         break;
+
+ if(isset($_GET['name'])){
+
+    switch($request){
+    
+        case root  . 'createblockchain' . '?name=' . $_GET['name']  :
+    
+            createBlockChain($_GET['name']);
+
+            break;
+                   
+    
+    }
     
 
 
-}
+ }
+
+
+
