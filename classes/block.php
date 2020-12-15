@@ -2,7 +2,6 @@
 
 
 class block{
-    
 
     private $index;
 
@@ -35,7 +34,6 @@ class block{
 
 
            //CALCULATION OF THE HASH FOR THE CURRENT BLOCK
-
 
            return hash("sha256", $this->index, $this->timeStamp . strVal($this->data) . $this->nonce );
      }

@@ -4,6 +4,100 @@
 
  class blockChain{
 
+    private $db;
+
+    private $blockChainName;
+
+
+    public function __construct($db, $blockChainName){
+
+        $this->db = $db;
+
+        $this->blockChainName = $blockChainName;
+
+    }
+
+
+    public function createTable(){
+
+
+        //Then, how to pull out already existing blockchains?
+
+        $tableName = $this->blockChainName;
+
+
+        $sql = 'CREATE TABLE ' . $tableName  . '(id INT PRIMARY KEY NOT NULL AUTO_INCREMENT , offerer VARCHAR(255) , receiver VARCHAR(255) , value INT , hash VARCHAR(100) )';
+       
+        $stmt = $this->db->prepare($sql);
+   
+        if(!($stmt->execute())){
+    
+          print_r($stmt->errorInfo());
+   
+         return;
+     
+        }
+   
+    }
+
+
+
+    //Creation of genesis block
+
+    public function createGenesisBlock(){
+
+        $hash = hash("sha256", "offerer" . "receiver" . 0 . strtotime("now"));
+
+        $sql = 'INSERT INTO ' . $this->blockChainName . '(offerer, receiver, value, hash) VALUES( :offerer , :receiver, :value , :hash)';
+
+        $stmt = $this->db->prepare($sql);
+  
+        $stmt->execute([':offerer' => 'offerer' , ':receiver' => 'receiver' , ':value' => 'value'  , ':hash' => $hash ]);
+
+    }
+
+
+
+
+
+    public function setLastBlockHash(){
+
+
+
+
+    }
+
+   
+
+  }
+
+
+
+
+
+
+
+
+
+ /*
+
+
+class blockChainFactory
+{
+
+    public function createBlockChain();
+
+
+ }
+
+
+
+
+
+
+ 
+ class blockChain{
+
 
     public function __construct($name){
 
@@ -147,18 +241,6 @@
 
 
 
-
-
- /*
-
-
-class blockChainFactory
-{
-
-    public function createBlockChain();
-
-
- }
 
 
  */

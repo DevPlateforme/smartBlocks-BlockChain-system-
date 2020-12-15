@@ -4,11 +4,13 @@
      <h3>Trouvez votre block</h3>
 
 
-     <form action="">
 
-           <input type="text" name='blockName' placeholder='Trouvez une block-chain'>
-           <input type="submit" value='chercher'>
-     </form>
+    <form action = "<?php echo rootUrl ?>" method="get">
+
+       <input type="text" name='newBcName' placeholder='Nom de votre block'/>
+       <input type="submit" value='créer une blockChain'/>
+
+    </form>
 
 
 

@@ -28,29 +28,27 @@ switch($request){
         require 'views/newBLockChain.php';
 
         break;
-
 }
 
 
-//Requests with GET
+//New blockchain
 
 
- if(isset($_GET['name'])){
-
-    switch($request){
+ if(isset($_GET['newBcName'])){
+     
+     $newBlockChainName = $_GET['newBcName'];
     
-        case root  . 'createblockchain' . '?name=' . $_GET['name']  :
-    
-            createBlockChain($_GET['name']);
-
-            break;
+     createBlockChain($_GET['newBcName']);
                    
-    
-    }
-    
-
 
  }
 
+
+ 
+ if(isset($_GET['bcName'])){
+        
+    seeOneBlockChain($_GET['bcName']);
+     
+}
 
 

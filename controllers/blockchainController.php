@@ -1,78 +1,50 @@
 <?php
 
 
-
 function createBlockChain($blockChainName){
 
     global $db;
 
-
     //check if value already exists
-
-
-    $sql = 'SELECT name FROM blockchains WHERE name = :blockChainName' ;
-
-    $stmt->prepare($sql);
-
-
-
-    try{
-        
-        $stmt->execute([ ':blockChainName' => $blockChainName ]);
-
-        echo 'ce nom est disponible';
-
-        $result = $stmt->fetchAll();
-
-
-        echo $result;
-
-
-    } catch(PDOException $e){
-
-          return $stmt->errorInfo();
-
+    
+    if(availableName($blockChainName) == false){
+        echo 'ce nom de blockchain est déjà utilisé, veuillez en choisir un autre';
+        return;
     }
-
-
-
-
 
 
     //if not used name, insert a new row into the table 'blockchains'
 
 
      $sql = "INSERT INTO blockchains(name) VALUES (:blockName)";
-
      $stmt = $db->prepare($sql);
-    
      if(!($stmt->execute([':blockName' => $blockChainName]))){
  
        print_r($stmt->errorInfo());
-
       return;
-  
      }
 
+     //CREATE THE BLOCKCHAIN OBJECT
+
+        $blockChain = new BlockChain($db, $blockChainName);
 
      //CREATE NEW BLOCKCHAIN TABLE
 
+          $blockChain->createTable();
 
-     //INSERT THE ORIGIN BLOCK 
+     //INSERT THE ORIGIN BLOCK INTO THIS TABLE 
 
+       $blockChain->createGenesisBlock();
 
-
-     echo 'you just created a block chain';
-
-
-
-     //get the ID of the newly created element
+   
+       echo 'you just created a block chain';
 
 
-     $sql = 'SELECT id FROM Blockchains ORDER BY id DESC LIMIT 1';
+     //get the ID of the newly created element , to redirect it
 
+     
+     $sql = 'SELECT id FROM blockchains ORDER BY id DESC LIMIT 1';
      $stmt= $db->prepare($sql);
-
      $stmt->execute();
 
 
@@ -84,29 +56,73 @@ function createBlockChain($blockChainName){
      $id = $result[0]["id"];
 
 
-    //redirect to the visualization method
-
-    seeOneBlockChain($id);
-
-}
+     header('Location: ' . rootUrl . '?bcName=' . $blockChainName );
 
 
-function seeOneBlockChain($id){
+     //now, we collect the id of the table, by name and render it
 
-    //WHAT YOU ACTUALLY WANT : ALL THE BLOCKS (SO A QUERY IS DONE USING THE FUNCTION GET BLOCKS. FOR EACH ROW, WE CREATE AN OBJECT, AND INSERT IT IN THE ROW. THAT WAY, WE LL INTERACT EASILY WITH IT.)
-        
-    //WHEN THE BLOCK IS UPDATED BY A USER : THE ARRAY THAT WAS PASSED IS UPDATED WITH THE NEW ARRAY (with new objects).
-
-    //THEN, WE CREATE A NEW OBJECT WITH THE NEW ELEMENT. WE GIVE IT THE PROPERTY 'last block' of our last block : previous block.
-
-    //THEN, WE MINE. IF WE PROVIDE THE RIGHT HASH : WE CHECK IF DURING OUR SEARCH, THE DB DIDNT CHANGE :
-
-    //SO, WE'LL TRUST SOCKETS.
+ }
 
 
-    //THIS LIST WILL BE UPDATED
+function seeOneBlockChain($blockChainName){
+
+
+
+    global $db;
+
+    //using sockets : every time there is an update, other dbs are updated.
+
+    //So, using the id of the blockchain :
+
+
+    $sql = 'SELECT :value1, :value2, :value3, :value4 FROM ' . $blockChainName ;
+
+    $stmt = $db->prepare($sql);
+
+    $stmt->execute([':value1' => 'offerer' , ':value2' => 'receiver' , ':value3' => 'value'  , ':value4' => 'hash']);
+
+
+     $result = $stmt->fetchAll();
+
+
+     print_r($result[0]);
+
+
+
 
 
     require './views/seeOneBlockChain.php';
 
+}
+
+
+
+
+function availableName($blockChainName){  
+    
+    
+        global $db;
+    
+    
+        $sql = 'SELECT name FROM blockchains WHERE name = :blockChainName' ;
+
+        $stmt = $db->prepare($sql);
+        
+        $stmt->execute([ ':blockChainName' => $blockChainName ]);
+
+
+
+
+        if($stmt->rowCount() > 0){
+
+            return false;
+
+        } else {
+
+            return true;
+
+        };
+         
+
+   
 }
