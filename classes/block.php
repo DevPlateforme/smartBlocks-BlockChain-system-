@@ -26,6 +26,7 @@
       public function calculateHash(){
 
         $this->hash = hash("sha256" , $this->offerer . $this->receiver . $this->value . strtotime("now") . $this->nonce );                 
+
       }
 
 

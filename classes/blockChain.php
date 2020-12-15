@@ -101,10 +101,10 @@
     private function mineBlock($block){
 
 
-        while( substr($block->hash, 0 , 4) != "0000") {
+        while( substr($block->hash, 0 , 4) !== "0000") {
 
-                $block->calculateHash();
-                $block->nonce++;
+               $block->nonce++;
+               $block->calculateHash();
             
         }
 
