@@ -1,9 +1,8 @@
 <?php 
-
-
+    
 
  class blockChain{
-
+     
     private $db;
 
     private $blockChainName;
@@ -26,7 +25,7 @@
         $tableName = $this->blockChainName;
 
 
-        $sql = 'CREATE TABLE ' . $tableName  . '(id INT PRIMARY KEY NOT NULL AUTO_INCREMENT , offerer VARCHAR(255) , receiver VARCHAR(255) , value INT , hash VARCHAR(100) )';
+        $sql = 'CREATE TABLE ' . $tableName  . '(id INT PRIMARY KEY NOT NULL AUTO_INCREMENT , offerer VARCHAR(255) , receiver VARCHAR(255) , value INT , hash VARCHAR(100) , previousHash VARCHAR(100) )';
        
         $stmt = $this->db->prepare($sql);
    
@@ -60,19 +59,88 @@
 
 
 
-    public function setLastBlockHash(){
+    public function addBlock($block){
 
 
+        $blockChainTable = $this->blockChainName;
+
+        $blockOfferer = $block->offerer;
+        $blockReceiver = $block->receiver;
+        $blockValue = $block->value;
+        $blockMessage = $block->message;
+        $blockHash = $block->hash;
 
 
+        $block->setPreviousHash($this->getLastBlockHash());
+               
+        $this->mineBlock($block);
+
+
+         //add a new row to the blockchain table
+
+
+         try{
+
+            $sql = 'INSERT INTO ' . $this->blockChainName . '(offerer, receiver, value, hash , previousHash ) VALUES( :offerer , :receiver, :value , :hash, :previousHash )';
+   
+            $stmt = $this->db->prepare($sql);
+      
+            $stmt->execute([':offerer' => $blockOfferer , ':receiver' => $blockReceiver , ':value' => $blockValue  , ':hash' => $block->hash , ':previousHash' => $block->previousHash ]);
+           
+                
+         }catch(Exception $e){
+
+            $e->getMessage();
+
+         }
+         
     }
 
-   
+
+
+    private function mineBlock($block){
+
+
+        while( substr($block->hash, 0 , 4) != "0000") {
+
+                $block->calculateHash();
+                $block->nonce++;
+            
+        }
+
+
+        echo 'block miné! </br>';
+
+        
+     }   
+
+
+
+     private function getLastBlockHash(){
+
+        $blockChainTable = $this->blockChainName;
+
+        try{
+            
+            $sql = 'SELECT hash FROM '.   $blockChainTable  . ' ORDER BY id DESC LIMIT 1';
+            $stmt= $this->db->prepare($sql);
+            $stmt->execute();
+
+            $result = $stmt->fetchAll();
+             return $result[0][0];
+
+        
+        } catch(Exception $e){
+
+            $e->getMessage();
+        }
+
+     }
+
+
+
 
   }
-
-
-
 
 
 

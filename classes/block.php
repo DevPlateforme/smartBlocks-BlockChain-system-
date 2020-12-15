@@ -1,48 +1,38 @@
 <?php
+   
+
+   class Block{
 
 
-class block{
+      function __construct($offerer, $receiver, $value, $message){
 
-    private $index;
+        $this->offerer = $offerer;
 
-    private $hash;
+        $this->receiver = $receiver;
 
-    private $timeStamp;
+        $this->value = $value;
 
-    private $data;
-    
-    private $previousHash = null;
+        $this->message = $message;
 
-    private $nonce = 0;
+        $this->hash = '';
 
+        $this->previousHash = '';
 
+        $this->nonce = 0;
 
-     function __construct($index, $timeStamp, $data){
-
-
-        $this->index = $index;
-
-         $this->$timeStamp = $timeStamp;
-
-         $this->data = $data;
-
-     }
+      }
 
 
-    
-     public function calculateHash(){
+      public function calculateHash(){
+
+        $this->hash = hash("sha256" , $this->offerer . $this->receiver . $this->value . strtotime("now") . $this->nonce );                 
+      }
 
 
-           //CALCULATION OF THE HASH FOR THE CURRENT BLOCK
+      public function setPreviousHash($previousHash){
 
-           return hash("sha256", $this->index, $this->timeStamp . strVal($this->data) . $this->nonce );
-     }
-     
+        $this->previousHash = $previousHash;
+        
+      }
 
-
-
-
-
-
-
-}
+   }

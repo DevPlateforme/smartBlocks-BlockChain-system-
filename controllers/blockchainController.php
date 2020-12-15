@@ -82,13 +82,7 @@ function seeOneBlockChain($blockChainName){
     $stmt->execute([':value1' => 'offerer' , ':value2' => 'receiver' , ':value3' => 'value'  , ':value4' => 'hash']);
 
 
-     $result = $stmt->fetchAll();
-
-
-     print_r($result[0]);
-
-
-
+     $result = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 
     require './views/seeOneBlockChain.php';
@@ -125,4 +119,38 @@ function availableName($blockChainName){
          
 
    
+}
+
+
+
+
+function addBlock($databaseName , $block){
+
+
+    global $db;
+
+
+    //first, mine the block
+
+    //manipulate the blockchain table through a blockchain object
+
+
+    $blockChain = new BlockChain($db, $databaseName);
+
+
+    try{
+        $blockChain->addBlock($block);
+
+        echo 'block ajouté!!';
+
+    } catch (Exception $e){
+
+        $e->getMessage();
+
+
+    }
+
+
+
+     
 }
