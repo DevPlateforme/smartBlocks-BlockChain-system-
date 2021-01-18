@@ -16,7 +16,7 @@
 
   <br>
 
-     <a href="<?php echo rootUrl ?>/newblockchain"><button>Créez votre block-chain</button></a>
+     <a href="<?php echo rootUrl ?>?createBlockchain"><button>Créez votre block-chain</button></a>
 
 
 

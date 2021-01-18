@@ -1,7 +1,7 @@
 <?php 
     
 
- class blockChain{
+ class BlockChain{
      
     private $db;
 

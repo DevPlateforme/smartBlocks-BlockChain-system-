@@ -8,11 +8,12 @@ require_once 'controllers/blockChainController.php';
 require_once 'views/header.php';
 
 
-
 //ROOTER
 
 
 $request = $_SERVER['REQUEST_URI'];
+
+
 
 
 switch($request){
@@ -25,24 +26,27 @@ switch($request){
 
         break;
 
-    case root . "newblockchain":
 
-        require 'views/newBLockChain.php';
-
-        break;
 }
 
 
 //New blockchain
 
 
- if(isset($_GET['newBcName'])){
-     
-     $newBlockChainName = $_GET['newBcName'];
-    
-     createBlockChain($_GET['newBcName']);
-                   
 
+if(isset($_GET['createBlockchain'])){
+     
+        require 'views/newBLockChain.php';
+
+        return;
+                
+}
+
+
+ if(isset($_GET['newBlockchain'])){
+     
+     createBlockChain($_GET['newBlockchain']);
+                   
  }
 
 
