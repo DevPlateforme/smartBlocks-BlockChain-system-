@@ -54,9 +54,6 @@ function createBlockChain($blockChainName){
 
     //a key=>value array is sent.
 
-     $id = $result[0]["id"];
-
-
      header('Location: ' . rootUrl . '?bcName=' . $blockChainName );
 
 
@@ -76,14 +73,16 @@ function seeOneBlockChain($blockChainName){
     //So, using the id of the blockchain :
 
 
-    $sql = 'SELECT :value1, :value2, :value3, :value4 FROM ' . $blockChainName ;
+    $sql = 'SELECT offerer, receiver , value , hash  FROM ' . $blockChainName ;
 
     $stmt = $db->prepare($sql);
 
-    $stmt->execute([':value1' => 'offerer' , ':value2' => 'receiver' , ':value3' => 'value'  , ':value4' => 'hash']);
+    $stmt->execute();
 
+     
+    $result = $stmt->fetchAll();
 
-     $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+    print_r($result);
 
 
     require './views/seeOneBlockChain.php';

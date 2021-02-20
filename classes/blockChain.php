@@ -51,7 +51,7 @@
 
         $stmt = $this->db->prepare($sql);
   
-        $stmt->execute([':offerer' => 'offerer' , ':receiver' => 'receiver' , ':value' => 'value'  , ':hash' => $hash ]);
+        $stmt->execute([':offerer' => 'genesis offerer' , ':receiver' => 'genesis receiver' , ':value' => 'value'  , ':hash' => $hash ]);
 
     }
 

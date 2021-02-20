@@ -37,8 +37,6 @@ try{
 
      $db = $dbObj->connect();
 
-     print_r('pdo connexion done </br>');
-
 
   } catch(PDOException $e){
 

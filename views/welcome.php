@@ -8,7 +8,7 @@ Welcome :)
     <form action = "<?php echo rootUrl ?>" method="get">
 
        <input type="text" name='newBcName' placeholder='Nom de votre block'/>
-       <input type="submit" value='créer une blockChain'/>
+       <input type="submit" value='Trouver une blockChain'/>
 
     </form>
 
@@ -17,8 +17,6 @@ Welcome :)
   <br>
 
      <a href="<?php echo rootUrl ?>?createBlockchain"><button>Créez votre block-chain</button></a>
-
-
 
 <?php
 
