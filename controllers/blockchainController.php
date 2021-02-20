@@ -154,3 +154,32 @@ function addBlock($databaseName , $block){
 
      
 }
+
+
+
+function findBlockChain($blockChainName){
+
+    global $db;
+
+    echo 'finding a block...';
+
+    //check the blockchains table
+
+      $sql = 'SELECT * FROM blockchains WHERE name = :name';
+
+      $stmt = $db->prepare($sql);
+
+      $stmt->execute([':name' => $blockChainName]);
+
+      $result = $stmt->fetchAll();
+
+      if(count($result) == 0){
+
+        echo 'blockchain not found';
+
+      } else {
+
+        seeOneBlockChain($blockChainName);
+      }
+
+}

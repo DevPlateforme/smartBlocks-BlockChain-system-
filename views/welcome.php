@@ -7,8 +7,8 @@ Welcome :)
 
     <form action = "<?php echo rootUrl ?>" method="get">
 
-       <input type="text" name='newBcName' placeholder='Nom de votre block'/>
-       <input type="submit" value='Trouver une blockChain'/>
+       <input type="text" name='searchedBlockchain' placeholder='Nom de votre chaîne'/>
+       <input type="submit" name='findBlockchain' value='Trouver une blockChain'/>
 
     </form>
 

@@ -59,6 +59,13 @@ if(isset($_GET['createBlockchain'])){
 
 
 
+if(isset($_GET["findBlockchain"])){
+
+     findBlockChain($_GET['searchedBlockchain']);
+}
+
+
+
 if(isset($_GET['newBlock'])){
 
      $offerer = $_GET['offerer'];
