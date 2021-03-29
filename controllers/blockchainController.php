@@ -67,6 +67,7 @@ function seeOneBlockChain($blockChainName){
 
 
     global $db;
+    global $blocks;
 
     //using sockets : every time there is an update, other dbs are updated.
 
@@ -80,9 +81,8 @@ function seeOneBlockChain($blockChainName){
     $stmt->execute();
 
      
-    $result = $stmt->fetchAll();
+    $blocks = $stmt->fetchAll();
 
-    print_r($result);
 
 
     require './views/seeOneBlockChain.php';
@@ -141,7 +141,9 @@ function addBlock($databaseName , $block){
     try{
         $blockChain->addBlock($block);
 
-        echo 'block ajouté!!';
+        //redirect to the blockchain page
+
+        seeOneBlockChain($databaseName);
 
     } catch (Exception $e){
 
