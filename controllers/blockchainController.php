@@ -8,7 +8,8 @@ function createBlockChain($blockChainName){
     //check if value already exists
     
     if(availableName($blockChainName) == false){
-        echo 'ce nom de blockchain est déjà utilisé, veuillez en choisir un autre';
+        require './views/unavailable.php';
+
         return;
     }
 
@@ -38,8 +39,6 @@ function createBlockChain($blockChainName){
        $blockChain->createGenesisBlock();
 
    
-       echo 'you just created a block chain';
-
 
      //get the ID of the newly created element , to redirect it
 
@@ -54,7 +53,9 @@ function createBlockChain($blockChainName){
 
     //a key=>value array is sent.
 
-     header('Location: ' . rootUrl . '?bcName=' . $blockChainName );
+     //header('Location: ' . rootUrl . '?bcName=' . $blockChainName );
+
+     seeOneBlockChain($blockChainName);
 
 
      //now, we collect the id of the table, by name and render it

@@ -20,7 +20,7 @@ switch($request){
 
     case root :
 
-        //echo 'ok';
+        echo 'ok';
         
         require 'views/welcome.php';
 

@@ -173,14 +173,11 @@ color: rgb(0,0,0,0.7);
 
 
 
-
-
   <br>
 
-     <a href="<?php echo rootUrl ?>?createBlockchain"><button style='opacity:0'>Créez votre block-chain</button></a>
+     <a href="<?php echo rootUrl ?>?createBlockchain"><button>Créez votre block-chain</button></a>
 
 <?php
-
 
     require 'footer.php';
 
@@ -210,11 +207,6 @@ function searchBlock(){
 
 
   //ajax request
-
-
-  
-
-
 
 
 }
