@@ -20,7 +20,7 @@ switch($request){
 
     case root :
 
-        echo 'ok';
+        //echo 'ok';
         
         require 'views/welcome.php';
 
@@ -59,7 +59,7 @@ if(isset($_GET['createBlockchain'])){
 
 
 
-if(isset($_GET["findBlockchain"])){
+if(isset($_GET["searchedBlockchain"])){
 
      findBlockChain($_GET['searchedBlockchain']);
 }

@@ -137,7 +137,7 @@ color: rgb(0,0,0,0.7);
 
 #messageDiv{
 
-   opacity: 0;
+   opacity: 1;
 }
 
 </style>
@@ -194,6 +194,12 @@ color: rgb(0,0,0,0.7);
 
 
 
+window.onload = function(){
+    setTimeout(() => {
+  document.getElementById('messageDiv').style.opacity = 0;  
+}, 2000);
+
+} 
 
 function searchBlock(){
 

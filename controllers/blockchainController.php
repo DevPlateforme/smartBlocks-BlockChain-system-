@@ -163,8 +163,6 @@ function findBlockChain($blockChainName){
 
     global $db;
 
-    echo 'finding a block...';
-
     //check the blockchains table
 
       $sql = 'SELECT * FROM blockchains WHERE name = :name';
@@ -177,7 +175,7 @@ function findBlockChain($blockChainName){
 
       if(count($result) == 0){
 
-        echo 'blockchain not found';
+        require './views/notFound.php';
 
       } else {
 
