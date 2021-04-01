@@ -381,6 +381,8 @@
          flex-direction:column;
          justify-content: flex-start;
          align-items: center;
+         overflow:auto;
+         
        }
 
        .mainDivBA{
@@ -923,11 +925,11 @@
 	<div class='mainDivA'>
 		<div class='mainDivAA' id='mainDivAALeft'>
 			<div id='mainDivAALeftA'>
-
+    
 
         <div id='titleContainer'>
-             <div class='titleContainerA'>name: crypto block</div>
-             <div class='titleContainerB'>creation date: 15/08/2019</div>
+             <div class='titleContainerA'>name: <?php echo $blockChainName?></div>
+             <div class='titleContainerB'>creation date: <?php echo date("d/m/Y") ?></div>
         </div>
        
       <div id='leftDivContainer'>          

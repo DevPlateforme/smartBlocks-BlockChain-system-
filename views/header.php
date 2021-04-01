@@ -94,6 +94,7 @@
       	 display:flex;
       	 justify-content:center;
       	 align-items: center;
+         position: relative;
  	
        }
 
@@ -103,6 +104,8 @@
          display:flex;
       	 justify-content:center;
       	 align-items: center;
+         position: relative;
+
 
        }
 
@@ -110,7 +113,7 @@
 
       .logoImg{
 
-       	 height: 80%;
+       	 height: 90%;
        	 width: auto;
 
        }
@@ -142,6 +145,14 @@
 
 
 
+    .btnLink{
+
+        position:absolute;
+        top:0px;
+        left:0px;
+        height:100%;
+        width: 100%;
+    }
 
    
 
@@ -276,16 +287,20 @@
 
 <div class ='navBarA'>
 
+       <a class='btnLink' href="<?php echo rootUrl ?>"></a> 
+
          <img class='mainLogoImg' src="img/smart.png">
     
 </div>
 <div class ='navBarB'>
     <div class ='navBarBA'>
         <div class='navBarBAA'>
+            <a class='btnLink' href="<?php echo rootUrl ?>?createBlockchain"></a> 
             <img class='logoImg' src="img/create.png">
         </div>
 
         <div class='navBarBAB'>
+        <a class='btnLink' href="<?php echo rootUrl ?>"></a> 
               <img class='logoImg' src="img/find.png">
 
         </div>

@@ -173,9 +173,6 @@ color: rgb(0,0,0,0.7);
 
 
 
-  <br>
-
-     <a href="<?php echo rootUrl ?>?createBlockchain"><button>Créez votre block-chain</button></a>
 
 <?php
 
