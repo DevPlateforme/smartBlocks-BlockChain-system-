@@ -9,20 +9,87 @@
   }
 
 
+  .blocksImg{
+      position: absolute;
+      top: 5%;
+      height: auto;
+      width: 85%;
+      right: 7.5%;
 
-
-@media screen and (min-width: 800px){
-        .blocksImg{
-   position: absolute;
-   top: 5%;
-   right: 5%;
-   height: 75%;
-   width: auto; 
    }
 
 
+   
+   #textDiv{
+
+          position:absolute;
+          top:60vh;
+          left:10vw;
+          height:50vh;
+          width:80vw;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+   }
+   
 
 
+ #textDivB{
+           height: 30%;
+           width: 100%;
+           display: flex;
+           flex-direction: column;
+           align-items: flex-start;
+           justify-content: space-around;
+   
+   }
+
+
+   .inputContainer{
+          height:45%;
+          width:100%;
+          display:flex;
+          justify-content:center;
+          align-items:center;
+          border-radius: 5px;
+          background: white;
+   }
+
+
+   .inputBox{
+     height:100%;
+     width:100%;
+     background:none;
+     border:none;
+     outline:none;
+   }
+
+
+   .createBtn {
+    height: 40%;
+    width: 65%;
+    background: blue;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    margin-left: 15%;
+}
+
+
+
+
+
+
+@media screen and (min-width: 600px){
+  .blocksImg{
+      position: absolute;
+      top: 12.5%;
+      height: auto;
+      width: 32.5vw; 
+      right: 10%;
+   }
 
 
    #textDiv{

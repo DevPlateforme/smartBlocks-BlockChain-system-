@@ -19,8 +19,6 @@ $request = $_SERVER['REQUEST_URI'];
 switch($request){
 
     case root :
-
-        echo 'ok';
         
         require 'views/welcome.php';
 

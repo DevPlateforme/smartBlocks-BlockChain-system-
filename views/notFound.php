@@ -1,4 +1,5 @@
-
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
 <style>
 
 
@@ -12,13 +13,13 @@ body{
 position: relative;
 top: 35vh;
 
-height: 20.5vh;
+height: 13vh;
 
-width:50vw;
+width:45vw;
 
 left: 25vw;
 
-border-radius: 20px;
+border-radius: 40px;
 
 background: white;
 
@@ -27,6 +28,8 @@ display: flex;
 justify-content: center;
 
 align-items: center;
+
+
 
 }
 
@@ -56,12 +59,13 @@ width: auto;
 
 height: 100%;
 width: 100%;
-font-size: 4vw;
+font-size: 3.5vw;
 background: none;
 border:none;
 outline: none;
 color: rgb(0,0,0,0.7);
 
+padding-left: 2.5%;
 }
 
 
@@ -76,7 +80,7 @@ color: rgb(0,0,0,0.7);
 
  #errorMsgContainer{
     position: absolute;
-    bottom: 20vh;
+    bottom: 10vh;
     left:27.5vw;
     width: 30vw;
     font-size: 1.5vw;
@@ -140,6 +144,26 @@ color: rgb(0,0,0,0.7);
    opacity: 1;
 }
 
+
+
+
+@media only screen and (max-width: 600px){
+      
+      
+
+   #searchBar{
+
+      width: 85%;
+      left:7.5%; 
+      top: 45vh;
+   }
+
+
+
+}
+
+
+
 </style>
 
 
@@ -174,13 +198,7 @@ color: rgb(0,0,0,0.7);
 
 
 
-
-  <br>
-
-     <a href="<?php echo rootUrl ?>?createBlockchain"><button style='opacity:0'>Créez votre block-chain</button></a>
-
 <?php
-
 
     require 'footer.php';
 
@@ -194,12 +212,6 @@ color: rgb(0,0,0,0.7);
 
 
 
-window.onload = function(){
-    setTimeout(() => {
-  document.getElementById('messageDiv').style.opacity = 0;  
-}, 2000);
-
-} 
 
 function searchBlock(){
 
@@ -218,13 +230,19 @@ function searchBlock(){
   //ajax request
 
 
-  
-
-
-
-
 }
 
+
+
+
+
+function launchPlaceHolderAnimation(){
+
+
+
+
+   
+}
 
 
 

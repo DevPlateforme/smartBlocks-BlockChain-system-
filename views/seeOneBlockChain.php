@@ -1122,21 +1122,21 @@
           <div class='rightInfoDivBA'>
 
               <div class='rightInfoDivBAA'>
-                   <div class='rightInfoDivBAAA'>block sender: Michael</div>
+                   <div class='rightInfoDivBAAA'>block sender: none</div>
                    <div class='rightInfoDivBAAA'></div>
               </div>
 
               <div class='rightInfoDivBAA'>
-                   <div class='rightInfoDivBAAA'>block receiver: Ludovic</div>
+                   <div class='rightInfoDivBAAA'>block receiver: none</div>
                    <div class='rightInfoDivBAAA'></div>
               </div>
    
               <div class='rightInfoDivBAA'>
-                   <div class='rightInfoDivBAAA'>Amount: 150 USD</div>
+                   <div class='rightInfoDivBAAA'>Amount: none</div>
                    <div class='rightInfoDivBAAA'></div>
               </div>
               <div class='rightInfoDivBAA'>
-                   <div class='rightInfoDivBAAA'>Message: Crypto adjustement last july 2019</div>
+                   <div class='rightInfoDivBAAA'>Message: no message inserted</div>
                    <div class='rightInfoDivBAAA'></div>
               </div>
    
