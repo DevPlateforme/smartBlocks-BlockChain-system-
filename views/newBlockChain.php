@@ -91,6 +91,13 @@
       right: 10%;
    }
 
+   #textDivAAA{
+
+       font-size: 5vw;
+
+
+   }
+
 
    #textDiv{
 
@@ -126,6 +133,7 @@
    #textDivAAA{
           height:70%;
           width:100%;
+          font-size:4.25vw;
    }
 
    #textDivAB{
