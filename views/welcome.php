@@ -65,7 +65,7 @@ border:none;
 outline: none;
 color: rgb(0,0,0,0.7);
 
-padding-left: 2.5%;
+padding-left: 5%;
 }
 
 
@@ -156,6 +156,12 @@ padding-left: 2.5%;
       width: 85%;
       left:7.5%; 
       top: 45vh;
+
+   }
+
+   #searchInput{
+      font-size: 6vw;
+
    }
 
 
