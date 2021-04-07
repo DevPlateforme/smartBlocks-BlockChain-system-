@@ -175,7 +175,7 @@ padding-left: 2.5%;
      
 <div id='searchBar'>
 
-<input placeholder="Find your block" type="" name="" id="searchInput">
+<input placeholder="" type="" name="" id="searchInput">
 
 <div id='logoContainer'>
      <button onclick='searchBlock()' id='searchBtn'></button>
@@ -210,7 +210,35 @@ padding-left: 2.5%;
 
 <script>
 
+window.onload = function(){
 
+var i = 0;
+
+var i2 = 0;
+
+    var txt= 'Find your blockchain';
+
+
+    
+    var speed = 55;
+    
+   
+    function txtwriting() {
+       if (i < txt.length) {
+       document.getElementById("searchInput").placeholder += txt.charAt(i);
+       i++;
+       setTimeout(txtwriting, speed);
+    }
+ } 
+
+
+txtwriting();
+
+
+
+
+
+}
 
 
 function searchBlock(){
